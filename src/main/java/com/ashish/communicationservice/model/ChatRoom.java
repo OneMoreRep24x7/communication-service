@@ -18,5 +18,6 @@ import java.util.UUID;
 public class ChatRoom {
     @Id
     private String id;
+    private String chatRoomName;
     private List<UUID> participants;
 }

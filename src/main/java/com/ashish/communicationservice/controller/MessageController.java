@@ -21,12 +21,12 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
     @MessageMapping("/sendMessage")
     public void sendMessage(@Payload Message message) {
+        System.out.println(message.getChatRoomId());
         // Add chatRoomId if not provided
         if (message.getChatRoomId() == null) {
             message.setChatRoomId(message.getSenderId() + "_" + message.getRecipientId());
@@ -35,10 +35,8 @@ public class MessageController {
         // Persist the message and associate it with the correct chat room
         // Let's assume `messageService.sendMessage(message)` saves the message to the database
         Message savedMessage = messageService.sendMessage(message);
-
+        System.out.println(savedMessage.getChatRoomId());
         // Send the message to the appropriate topic
         simpMessagingTemplate.convertAndSend("/topic/chat_room/" + savedMessage.getChatRoomId(), savedMessage);
     }
-
-
 }

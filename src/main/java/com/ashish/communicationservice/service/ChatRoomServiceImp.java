@@ -13,7 +13,7 @@ public class ChatRoomServiceImp implements ChatRoomService{
     private ChatRoomRepository chatRoomRepository;
 
     @Override
-    public ChatRoom createChatRoom(UUID userId, UUID trainerId) {
+    public ChatRoom createChatRoom(UUID userId, UUID trainerId,String chatRoomId,String fullName) {
         // Ensure that the participants are in a consistent order
         List<UUID> participants = Arrays.asList(userId, trainerId);
         Collections.sort(participants); // Sort to ensure consistent order
@@ -26,10 +26,11 @@ public class ChatRoomServiceImp implements ChatRoomService{
             return existingChatRoom.get();
         } else {
             // Otherwise, create a new one
-            String uniqueId = UUID.randomUUID().toString();
+            String uniqueId = chatRoomId;
             ChatRoom newChatRoom = new ChatRoom();
             newChatRoom.setId(uniqueId);
             newChatRoom.setParticipants(participants);
+            newChatRoom.setChatRoomName(fullName);
             return chatRoomRepository.save(newChatRoom);
         }
     }
