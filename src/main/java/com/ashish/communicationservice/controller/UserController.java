@@ -38,20 +38,20 @@ public class UserController {
 
     @PostMapping("/disconnect")
     public ResponseEntity<Void> disconnectUser(@RequestBody UserDto userDto) {
-        userService.disconnectUser(userDto.getUserId());
+        userService.disconnectUser(userDto.getUserId()  );
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/getUsers")
     public ResponseEntity<List<User>> getUsers(
-            @RequestParam("trainerId") UUID trainerId
+            @RequestParam("trainerId") String trainerId
     ){
         return ResponseEntity.ok(userService.getAllUsers(trainerId));
     }
 
     @GetMapping("/getTrainer")
     public ResponseEntity<Trainer> getTrainer(
-            @RequestParam("userId") UUID userId
+            @RequestParam("userId") String userId
     ){
         return ResponseEntity.ok(userService.getTrainer(userId));
     }
@@ -62,7 +62,7 @@ public class UserController {
     }
     @GetMapping("/chat-rooms")
     public List<ChatRoom> getChatRoomsByTrainer(
-            @RequestParam("trainerId") UUID trainerId) {
+            @RequestParam("trainerId")String trainerId) {
         return chatRoomService.getTrainerChatRooms(trainerId);
     }
 }

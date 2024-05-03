@@ -14,11 +14,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Data
 @Builder
-@Document
+@Document(collection = "trainers")
 public class Trainer {
 
     @Id
-    private UUID trainerId;
+    private String trainerId;
 
     private String fullName;
 

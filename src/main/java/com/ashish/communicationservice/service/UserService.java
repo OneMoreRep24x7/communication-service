@@ -10,11 +10,11 @@ import java.util.UUID;
 public interface UserService {
     User registerUser(UserDto userInfo);
 
-    void disconnectUser(UUID userId);
+    void disconnectUser(String userId);
 
-    void disconnectTrainer(UUID trainerId);
+    void disconnectTrainer(String trainerId);
 
-    List<User> getAllUsers(UUID trainerId);
+    List<User> getAllUsers(String trainerId);
 
-    Trainer getTrainer(UUID userId);
+    Trainer getTrainer(String userId);
 }

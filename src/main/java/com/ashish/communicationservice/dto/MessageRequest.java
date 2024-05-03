@@ -12,6 +12,6 @@ import java.util.UUID;
 @Builder
 @Data
 public class MessageRequest {
-    private UUID userId;
-    private  UUID trainerId;
+    private String userId;
+    private  String trainerId;
 }

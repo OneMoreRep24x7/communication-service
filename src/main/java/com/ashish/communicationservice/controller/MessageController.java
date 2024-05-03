@@ -26,9 +26,10 @@ public class MessageController {
 
     @MessageMapping("/sendMessage")
     public void sendMessage(@Payload Message message) {
-        System.out.println(message.getChatRoomId());
+        System.out.println(message.getChatRoomId()+"ChatRoom Id");
         // Add chatRoomId if not provided
         if (message.getChatRoomId() == null) {
+            System.out.println(">>>>>>>>Enter in to danger");
             message.setChatRoomId(message.getSenderId() + "_" + message.getRecipientId());
         }
 

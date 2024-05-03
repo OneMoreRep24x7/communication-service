@@ -11,14 +11,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document
+@Document(collection = "users")
 public class User {
 
     @Id
-    private UUID userId;
+    private String userId;
     private String fullName;
     private Status status;
-    private UUID trainerId;
+    private String trainerId;
 
 
 }

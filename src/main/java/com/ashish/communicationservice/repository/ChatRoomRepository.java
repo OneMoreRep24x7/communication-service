@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface ChatRoomRepository extends MongoRepository<ChatRoom,String> {
-    Optional<ChatRoom> findByParticipants(List<UUID> participants);
+    Optional<ChatRoom> findByParticipants(List<String> participants);
 
-    List<ChatRoom> findByParticipantsContaining(UUID trainerId);
+    List<ChatRoom> findByParticipantsContaining(String trainerId);
 }

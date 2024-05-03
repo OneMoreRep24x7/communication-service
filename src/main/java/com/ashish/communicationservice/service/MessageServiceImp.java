@@ -26,9 +26,8 @@ public class MessageServiceImp implements MessageService {
     @Override
     public Message  sendMessage(Message message) {
         // Find or create a chat room based on sender and recipient
-        UUID senderId = UUID.fromString(message.getSenderId());
-        UUID recipientId = UUID.fromString(message.getRecipientId());
-        User user = userRepository.findByUserId(senderId).orElse(null);
+
+        User user = userRepository.findByUserId(message.getSenderId()).orElse(null);
 
 
         String fullName;
@@ -39,8 +38,8 @@ public class MessageServiceImp implements MessageService {
         }
 
         ChatRoom chatRoom = chatRoomService
-                .getChatRoom(senderId, recipientId)
-                .orElse(chatRoomService.createChatRoom(senderId,recipientId,message.getChatRoomId(),fullName));
+                .getChatRoom(message.getSenderId(), message.getRecipientId())
+                .orElse(chatRoomService.createChatRoom(message.getSenderId(), message.getRecipientId(),message.getChatRoomId(),fullName));
 
         // Set the chat room ID in the message
         message.setChatRoomId(chatRoom.getId());
@@ -49,7 +48,7 @@ public class MessageServiceImp implements MessageService {
     }
 
     @Override
-    public List<Message> getMessagesBetweenUsers(UUID userId, UUID trainerId) {
+    public List<Message> getMessagesBetweenUsers(String userId, String trainerId) {
         String userIdString = userId.toString();
         String trainerIdString = trainerId.toString();
 

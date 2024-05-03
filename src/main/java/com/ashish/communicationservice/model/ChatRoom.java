@@ -19,5 +19,5 @@ public class ChatRoom {
     @Id
     private String id;
     private String chatRoomName;
-    private List<UUID> participants;
+    private List<String> participants;
 }

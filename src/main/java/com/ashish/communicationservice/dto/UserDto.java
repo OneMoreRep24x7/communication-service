@@ -12,10 +12,10 @@ import java.util.UUID;
 @Builder
 @Data
 public class UserDto {
-    private UUID userId;
+    private String userId;
     private String userFistName;
     private String userLastName;
-    private UUID  trainerId;
+    private String  trainerId;
     private String trainerFirstName;
     private String trainerLastName;
 

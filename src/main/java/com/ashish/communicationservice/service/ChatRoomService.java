@@ -7,9 +7,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ChatRoomService {
-    ChatRoom createChatRoom(UUID userId, UUID trainerId,String chatRoomId,String fullName);
+    ChatRoom createChatRoom(String userId, String trainerId,String chatRoomId,String fullName);
 
-    Optional<ChatRoom> getChatRoom(UUID userId, UUID trainerId);
+    Optional<ChatRoom> getChatRoom(String userId, String trainerId);
 
-    List<ChatRoom> getTrainerChatRooms(UUID id);
+    List<ChatRoom> getTrainerChatRooms(String id);
 }

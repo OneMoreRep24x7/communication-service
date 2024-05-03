@@ -8,5 +8,5 @@ import java.util.UUID;
 public interface MessageService {
     Message sendMessage(Message message);
 
-    List<Message> getMessagesBetweenUsers(UUID userId, UUID trainerId);
+    List<Message> getMessagesBetweenUsers(String userId, String trainerId);
 }

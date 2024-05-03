@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 @Repository
-public interface TrainerRepository extends MongoRepository<Trainer, UUID> {
+public interface TrainerRepository extends MongoRepository<Trainer, String> {
 }

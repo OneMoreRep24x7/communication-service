@@ -75,7 +75,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public void disconnectUser(UUID userId) {
+    public void disconnectUser(String userId) {
         User storedUser = userRepository.findById(userId).orElse(null);
         if(storedUser!=null){
             storedUser.setStatus(Status.OFFLINE);
@@ -83,7 +83,7 @@ public class UserServiceImp implements UserService{
         }
     }
     @Override
-    public void disconnectTrainer(UUID trainerId){
+    public void disconnectTrainer(String trainerId){
         Trainer storedTrainer = trainerRepository.findById(trainerId).orElse(null);
         if(storedTrainer!=null){
             storedTrainer.setStatus(Status.OFFLINE);
@@ -92,16 +92,16 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public List<User> getAllUsers(UUID trainerId) {
+    public List<User> getAllUsers(String trainerId) {
         Trainer trainer = trainerRepository.findById(trainerId).orElse(null);
         List<User> users = trainer.getUsers();
         return users;
     }
 
     @Override
-    public Trainer getTrainer(UUID userId) {
+    public Trainer getTrainer(String userId) {
         User user = userRepository.findById(userId).orElse(null);
-        UUID trainerId = user.getTrainerId();
+        String trainerId = user.getTrainerId();
         Trainer trainer = trainerRepository.findById(trainerId).get();
         return trainer;
     }
