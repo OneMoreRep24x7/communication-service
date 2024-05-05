@@ -30,6 +30,7 @@ public class ChatRoomServiceImp implements ChatRoomService{
             ChatRoom newChatRoom = new ChatRoom();
             newChatRoom.setId(uniqueId);
             newChatRoom.setParticipants(participants);
+            newChatRoom.setUserId(userId);
             newChatRoom.setChatRoomName(fullName);
             return chatRoomRepository.save(newChatRoom);
         }
