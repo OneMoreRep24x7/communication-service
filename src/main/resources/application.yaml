@@ -2,10 +2,10 @@ spring:
   application:
     name: communication-service
   config:
-    import: "optional:configserver:http://3.109.184.195:8888"
+    import: "optional:configserver:http://3.111.235.72:8888"
 eureka:
   instance:
     host: localhost
   client:
     service-url:
-      defaultZone: http://3.109.184.195:8761/eureka
+      defaultZone: http://3.111.235.72:8761/eureka
